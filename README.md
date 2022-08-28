@@ -5,6 +5,12 @@
 - node ^16
 - docker-compose
 
+## Tech stack
+
+- Frontend: React / Nanostores / Chakra UI
+- Backend: Fastify / Prsima
+- Both: TypeScript / socket.io
+
 ## Getting started
 
 ```bash
@@ -15,13 +21,13 @@ npm i
 
 ### Start frontend
 
-```
+```bash
 npm run start
 ```
 
 ### Start backend
 
-```
+```bash
 docker-compose up --build
 npm run start:backend
 ```
