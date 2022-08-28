@@ -2,7 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "multi": "apps/multi",
-    "multi-e2e": "apps/multi-e2e"
+    "backend": "apps/backend",
+    "multi": "apps/multi"
   }
 }
