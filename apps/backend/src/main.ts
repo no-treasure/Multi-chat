@@ -1,19 +1,15 @@
 import Fastify from "fastify"
+import { logger, prismaPlugin } from "@multi-chat/backend/plugins"
+
 import routes from "./app/firstRoute"
 
 const fastify = Fastify({
-  logger: {
-    transport: {
-      target: "pino-pretty",
-      options: {
-        translateTime: "HH:MM:ss Z",
-        ignore: "pid,hostname"
-      }
-    }
-  }
+  logger
 })
 
 fastify.register(routes)
+
+fastify.register(prismaPlugin)
 
 const start = async () => {
   try {

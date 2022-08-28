@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "backend": "apps/backend",
-    "multi": "apps/multi"
+    "backend-plugins": "libs/backend/plugins",
+    "frontend": "apps/frontend"
   }
 }

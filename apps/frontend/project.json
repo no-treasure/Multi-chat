@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/multi/src",
+  "sourceRoot": "apps/frontend/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,13 +9,13 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/multi",
-        "index": "apps/multi/src/index.html",
+        "outputPath": "dist/apps/frontend",
+        "index": "apps/frontend/src/index.html",
         "baseHref": "/",
-        "main": "apps/multi/src/main.tsx",
-        "polyfills": "apps/multi/src/polyfills.ts",
-        "tsConfig": "apps/multi/tsconfig.app.json",
-        "assets": ["apps/multi/src/assets"],
+        "main": "apps/frontend/src/main.tsx",
+        "polyfills": "apps/frontend/src/polyfills.ts",
+        "tsConfig": "apps/frontend/tsconfig.app.json",
+        "assets": ["apps/frontend/src/assets"],
         "styles": [],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
@@ -30,8 +30,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/multi/src/environments/environment.ts",
-              "with": "apps/multi/src/environments/environment.prod.ts"
+              "replace": "apps/frontend/src/environments/environment.ts",
+              "with": "apps/frontend/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -47,16 +47,16 @@
       "executor": "@nrwl/web:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "multi:build",
+        "buildTarget": "frontend:build",
         "hmr": true,
-        "proxyConfig": "apps/multi/proxy.conf.json"
+        "proxyConfig": "apps/frontend/proxy.conf.json"
       },
       "configurations": {
         "development": {
-          "buildTarget": "multi:build:development"
+          "buildTarget": "frontend:build:development"
         },
         "production": {
-          "buildTarget": "multi:build:production",
+          "buildTarget": "frontend:build:production",
           "hmr": false
         }
       }
@@ -65,14 +65,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/multi/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/frontend/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/multi"],
+      "outputs": ["coverage/apps/frontend"],
       "options": {
-        "jestConfig": "apps/multi/jest.config.ts",
+        "jestConfig": "apps/frontend/jest.config.ts",
         "passWithNoTests": true
       }
     }
