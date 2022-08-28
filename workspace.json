@@ -4,6 +4,7 @@
   "projects": {
     "backend": "apps/backend",
     "backend-plugins": "libs/backend/plugins",
-    "frontend": "apps/frontend"
+    "frontend": "apps/frontend",
+    "frontend-pages": "libs/frontend/pages"
   }
 }

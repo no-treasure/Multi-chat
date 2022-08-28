@@ -14,8 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "jsx": "react",
     "paths": {
-      "@multi-chat/backend/plugins": ["libs/backend/plugins/src/index.ts"]
+      "@multi-chat/backend/plugins": ["libs/backend/plugins/src/index.ts"],
+      "@multi-chat/frontend/pages": ["libs/frontend/pages/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
