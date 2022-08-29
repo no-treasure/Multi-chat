@@ -19,6 +19,7 @@
       "@multi-chat/backend/plugins": ["libs/backend/plugins/src/index.ts"],
       "@multi-chat/backend/routes": ["libs/backend/routes/src/index.ts"],
       "@multi-chat/backend/schemas": ["libs/backend/schemas/src/index.ts"],
+      "@multi-chat/frontend/hooks": ["libs/frontend/hooks/src/index.ts"],
       "@multi-chat/frontend/pages": ["libs/frontend/pages/src/index.ts"]
     }
   },
