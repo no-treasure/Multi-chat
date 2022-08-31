@@ -7,14 +7,14 @@ const fastify = Fastify({
   logger
 })
 
-// # Routes
-fastify.register(usersRoute)
-
 // # Plugins
 fastify.register(jwtPlugin)
 fastify.register(configPlugin)
-fastify.register(prismaPlugin)
 fastify.register(sensiblePlugin)
+fastify.register(prismaPlugin)
+
+// # Routes
+fastify.register(usersRoute)
 
 const start = async () => {
   try {
