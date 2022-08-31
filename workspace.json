@@ -3,8 +3,9 @@
   "version": 2,
   "projects": {
     "backend": "apps/backend",
+    "backend-constants": "libs/backend/constants",
+    "backend-modules": "libs/backend/modules",
     "backend-plugins": "libs/backend/plugins",
-    "backend-routes": "libs/backend/routes",
     "backend-schemas": "libs/backend/schemas",
     "frontend": "apps/frontend",
     "frontend-hooks": "libs/frontend/hooks",

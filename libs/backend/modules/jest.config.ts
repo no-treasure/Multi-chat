@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "backend-routes",
+  displayName: "backend-modules",
   preset: "../../../jest.preset.js",
   globals: {
     "ts-jest": {
@@ -12,5 +12,5 @@ export default {
     "^.+\\.[tj]sx?$": "ts-jest"
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
-  coverageDirectory: "../../../coverage/libs/backend/routes"
+  coverageDirectory: "../../../coverage/libs/backend/modules"
 }
