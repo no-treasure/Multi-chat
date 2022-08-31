@@ -1,7 +1,7 @@
 import { FastifySchema } from "fastify"
 import { Static, Type } from "@sinclair/typebox"
 import { RouteGenericInterface } from "fastify/types/route"
-import { UserReply } from "./user-reply.schema"
+import { UserReply } from "./user-reply"
 
 export interface UpdateUserRequest extends RouteGenericInterface {
   Body: UpdateUserDto
