@@ -19,6 +19,9 @@ export interface LoginRequest extends RouteGenericInterface {
 
 export const LoginSchema: FastifySchema = {
   body: LoginUserDto,
+  description: "Sign in user",
+  tags: ["Authentication"],
+  summary: "sign in",
   response: {
     200: UserReply
   }

@@ -21,6 +21,9 @@ export interface RegisterRequest extends RouteGenericInterface {
 
 export const RegisterSchema: FastifySchema = {
   body: CreateUserDto,
+  description: "Sign up a user",
+  tags: ["Authentication"],
+  summary: "sign up",
   response: {
     201: UserReply,
     400: ErrorReply
