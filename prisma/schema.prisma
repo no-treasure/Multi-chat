@@ -16,5 +16,32 @@ model User {
   email        String   @unique
   passwordHash String
   username     String   @default("")
-  image        String?
+  rooms        Room[]
+
+  image   String?
+  Message Message[]
+}
+
+model Room {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  users     User[]
+  Message   Message[]
+}
+
+model Message {
+  id          Int                @id @default(autoincrement())
+  createdAt   DateTime           @default(now())
+  user        User               @relation(fields: [userId], references: [id])
+  room        Room               @relation(fields: [roomId], references: [id])
+  contentType MessageContentType
+  contendData Json
+  userId      Int
+  roomId      Int
+}
+
+enum MessageContentType {
+  text
+  image
+  audio
 }
