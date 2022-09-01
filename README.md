@@ -14,7 +14,7 @@
 ## Getting started
 
 ```bash
-git clone multi-chat
+git clone https://github.com/ArseniySushCorp/Multi-chat.git
 cd multi-chat
 npm i
 ```

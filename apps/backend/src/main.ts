@@ -1,27 +1,37 @@
 import Fastify from "fastify"
-import sensiblePlugin, { SensibleOptions } from "@fastify/sensible"
 
-import { logger, prismaPlugin, configPlugin } from "@multi-chat/backend/plugins"
-import { usersRoutes } from "@multi-chat/backend/routes"
+import {
+  logger,
+  prismaPlugin,
+  configPlugin,
+  jwtPlugin,
+  sensiblePlugin,
+  swaggerPlugin
+} from "@multi-chat/backend/plugins"
+import { usersRoute } from "@multi-chat/backend/modules"
 
 const fastify = Fastify({
   logger
 })
 
-// # Routes
-fastify.register(usersRoutes)
-
 // # Plugins
+fastify.register(jwtPlugin)
 fastify.register(configPlugin)
+fastify.register(sensiblePlugin)
 fastify.register(prismaPlugin)
-fastify.register<SensibleOptions>(sensiblePlugin)
+fastify.register(swaggerPlugin)
+
+// # Routes
+fastify.register(usersRoute)
 
 const start = async () => {
   try {
-    await fastify.listen({ port: 3000 })
+    await fastify.listen({ port: 3001 })
+    fastify.swagger()
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
   }
 }
+
 start()

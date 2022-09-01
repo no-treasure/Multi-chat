@@ -1,1 +1,6 @@
-export * from "./lib/Config"
+export * from "./lib/config"
+export * from "./lib/error"
+export * from "./lib/users/register"
+export * from "./lib/users/user-reply"
+export * from "./lib/users/update-user"
+export * from "./lib/users/login"

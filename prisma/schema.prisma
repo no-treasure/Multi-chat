@@ -15,5 +15,6 @@ model User {
   createdAt    DateTime @default(now())
   email        String   @unique
   passwordHash String
-  name         String
+  username     String   @default("")
+  image        String?
 }
