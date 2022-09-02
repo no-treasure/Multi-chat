@@ -6,30 +6,46 @@ import {
   configPlugin,
   jwtPlugin,
   sensiblePlugin,
-  swaggerPlugin
+  swaggerPlugin,
+  socketIoPlugin
 } from "@multi-chat/backend/plugins"
-import { usersRoute } from "@multi-chat/backend/modules"
+import { messageModule, roomModule, usersRoute } from "@multi-chat/backend/modules"
+import { readFileSync } from "node:fs"
+import { join } from "node:path"
 
-const fastify = Fastify({
+import { sourceRoot } from "../project.json"
+// import { Server } from "socket.io"
+
+const server = Fastify({
   logger
 })
 
 // # Plugins
-fastify.register(jwtPlugin)
-fastify.register(configPlugin)
-fastify.register(sensiblePlugin)
-fastify.register(prismaPlugin)
-fastify.register(swaggerPlugin)
+server.register(configPlugin)
+server.register(jwtPlugin)
+server.register(sensiblePlugin)
+server.register(prismaPlugin)
+server.register(swaggerPlugin)
+server.register(socketIoPlugin)
+
+server.get("/", async (req, reply) => {
+  const data = readFileSync(join(sourceRoot, "index.html"))
+  reply.header("content-type", "text/html; charset=utf-8")
+  reply.send(data)
+})
+
+server.register(messageModule)
+server.register(roomModule)
 
 // # Routes
-fastify.register(usersRoute)
+server.register(usersRoute)
 
 const start = async () => {
   try {
-    await fastify.listen({ port: 3001 })
-    fastify.swagger()
+    await server.listen({ port: 3000 })
+    server.swagger()
   } catch (err) {
-    fastify.log.error(err)
+    server.log.error(err)
     process.exit(1)
   }
 }

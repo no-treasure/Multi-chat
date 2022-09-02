@@ -40,14 +40,6 @@ class UsersService {
 
     return userResponse
   }
-
-  // async updateUser({ id }: User, { user }: UpdateUserDto): Promise<User | null> {
-  //   const updatedUser = await UserModel.findByIdAndUpdate(_id, user, { new: true }).exec()
-
-  //   if (!updatedUser) return null
-
-  //   return updatedUser.toObject()
-  // }
 }
 
 export default UsersService

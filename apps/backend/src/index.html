@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Look at the server log to see if the connection happened</h1>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io({
+      transports: ["websocket"],
+      auth: {
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY3JlYXRlZEF0IjoiMjAyMi0wOS0wMlQyMTowNTozNy43NzhaIiwiZW1haWwiOiJhZG1pQGFkbWluLmNvbSIsInBhc3N3b3JkSGFzaCI6IiQyYSQxMCRSL1hrd0FId2daS09SVHdZaXlaRjZPd0NqNkt3OXU3dWdnWUdTSmYxSmhnSW5lNFp1Qm5BMiIsInVzZXJuYW1lIjoiQXJzZW5peSIsImltYWdlIjpudWxsLCJpYXQiOjE2NjIxNTI3Mzd9.hVPPyiZJJT80DgYB2UM7Q8uqfTliytTmftR6Blxpf0I"
+      }
+    })
+  </script>
+</html>

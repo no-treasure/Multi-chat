@@ -1,8 +1,32 @@
 import fp from "fastify-plugin"
-import fastifySensible, { SensibleOptions } from "@fastify/sensible"
+import { User } from "@prisma/client"
+import fastifyJwt, { FastifyJWTOptions } from "@fastify/jwt"
+import { FastifyReply, FastifyRequest } from "fastify"
 
-const sensiblePlugin = fp<SensibleOptions>(async (fastify, opts) => {
-  fastify.register<SensibleOptions>(fastifySensible, opts)
+const jwtPlugin = fp<FastifyJWTOptions>(async (server, opts) => {
+  server.register(fastifyJwt, {
+    secret: server.config.JWT_SECRET
+  })
+
+  server.decorate("authenticate", async (request: FastifyRequest, reply: FastifyReply) => {
+    try {
+      await request.jwtVerify()
+    } catch (err) {
+      reply.send(err)
+    }
+  })
 })
 
-export { sensiblePlugin }
+declare module "@fastify/jwt" {
+  interface FastifyJWT {
+    payload: User
+  }
+}
+
+declare module "fastify" {
+  export interface FastifyInstance {
+    authenticate(request: FastifyRequest, reply: FastifyReply): void
+  }
+}
+
+export { jwtPlugin }

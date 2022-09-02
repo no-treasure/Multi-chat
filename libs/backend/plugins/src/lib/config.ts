@@ -11,8 +11,8 @@ declare module "fastify" {
   }
 }
 
-const configPlugin = fp<fastifyEnvOpt>(async (fastify, opts) => {
-  fastify.register(fastifyEnv, { schema: ConfigSchema })
+const configPlugin = fp<fastifyEnvOpt>(async (server, opts) => {
+  server.register(fastifyEnv, { schema: ConfigSchema })
 })
 
 export { configPlugin }

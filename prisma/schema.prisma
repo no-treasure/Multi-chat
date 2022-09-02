@@ -18,15 +18,15 @@ model User {
   username     String   @default("")
   rooms        Room[]
 
-  image   String?
-  Message Message[]
+  image    String?
+  messages Message[]
 }
 
 model Room {
   id        Int       @id @default(autoincrement())
   createdAt DateTime  @default(now())
   users     User[]
-  Message   Message[]
+  messages  Message[]
 }
 
 model Message {

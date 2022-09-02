@@ -1,13 +1,28 @@
+import { User } from "@prisma/client"
 import fp from "fastify-plugin"
 import { Server, ServerOptions } from "socket.io"
 
 type Options = Partial<ServerOptions>
 
-const socketIoPlugin = fp<Options>(async function (fastify, opts) {
-  fastify.decorate("io", new Server(fastify.server, opts))
+const socketIoPlugin = fp<Options>(async function (server) {
+  server.decorate("io", new Server(server.server, { transports: ["websocket"] }))
 
-  fastify.addHook("onClose", (fastify, done) => {
-    fastify.io.close()
+  server.io.use((socket, next) => {
+    const token = socket.handshake.auth.token
+
+    const user = server.jwt.verify<User>(token)
+
+    if (!user) {
+      next(new Error("thou shall not pass"))
+    }
+
+    server.user = user
+
+    next()
+  })
+
+  server.addHook("onClose", (server, done) => {
+    server.io.close()
     done()
   })
 })
@@ -15,6 +30,7 @@ const socketIoPlugin = fp<Options>(async function (fastify, opts) {
 declare module "fastify" {
   interface FastifyInstance {
     io: Server
+    user: User
   }
 }
 
