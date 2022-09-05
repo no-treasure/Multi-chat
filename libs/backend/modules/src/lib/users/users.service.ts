@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify"
 import { assoc, omit, pick, pipe } from "ramda"
-import { genSalt, hash } from "bcryptjs"
+import { compare, genSalt, hash } from "bcryptjs"
 import { CreateUserDto } from "@multi-chat/backend/schemas"
 import { User } from "@prisma/client"
 import UsersRepository from "./users.repository"

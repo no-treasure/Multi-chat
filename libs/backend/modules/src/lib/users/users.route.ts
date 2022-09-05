@@ -31,8 +31,13 @@ const usersRoute: FastifyPluginAsync = async (server): Promise<void> => {
 
     if (!isCorrectPass) throw server.httpErrors.unauthorized(usersErrors.WRONG_PASS_ERROR)
 
-    reply.status(201)
+    reply.status(200)
     return { user: usersService.buildUserResponse(existUser) }
+  })
+
+  // TEST
+  server.get("/user", { onRequest: server.authenticate }, async (request, reply) => {
+    return request.user
   })
 }
 
