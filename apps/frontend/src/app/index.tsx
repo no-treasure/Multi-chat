@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import { Layout, RootPage } from "@multi-chat/frontend/pages"
+import { RootPage } from "@multi-chat/frontend/pages"
+import { Layout } from "@multi-chat/frontend/components"
 
 export function App() {
   return (
