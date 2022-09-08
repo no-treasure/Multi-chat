@@ -8,6 +8,7 @@
     "backend-plugins": "libs/backend/plugins",
     "backend-schemas": "libs/backend/schemas",
     "frontend": "apps/frontend",
+    "frontend-components": "libs/frontend/components",
     "frontend-hooks": "libs/frontend/hooks",
     "frontend-pages": "libs/frontend/pages"
   }
