@@ -19,6 +19,7 @@
     "@fastify/jwt": "^6.3.2",
     "@fastify/sensible": "^5.1.1",
     "@fastify/swagger": "^7.4.1",
+    "@nanostores/react": "^0.3.0",
     "@ngneat/falso": "^6.1.0",
     "@prisma/client": "^4.2.1",
     "@sinclair/typebox": "^0.24.28",
