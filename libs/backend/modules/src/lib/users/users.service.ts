@@ -1,9 +1,10 @@
 import { FastifyInstance } from "fastify"
 import { assoc, omit, pick, pipe } from "ramda"
-import { compare, genSalt, hash } from "bcryptjs"
+import { genSalt, hash } from "bcryptjs"
 import { CreateUserDto } from "@multi-chat/backend/schemas"
 import { User } from "@prisma/client"
 import UsersRepository from "./users.repository"
+import { Users } from "@multi-chat/shared/types"
 
 class UsersService {
   server: FastifyInstance
@@ -32,7 +33,7 @@ class UsersService {
     return newUser
   }
 
-  buildUserResponse(user: User): Pick<User, "email" | "username" | "image"> & { token: string } {
+  buildUserResponse(user: User): Users.Response {
     const userResponse = pipe(
       pick(["email", "username", "image"]),
       assoc("token", `Bearer ${this.server.jwt.sign(user)}`)

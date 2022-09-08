@@ -5,7 +5,7 @@ import { usersErrors } from "@multi-chat/backend/constants"
 
 import UsersService from "./users.service"
 
-const usersRoute: FastifyPluginAsync = async (server): Promise<void> => {
+const usersRoute: FastifyPluginAsync = async (server) => {
   const usersService = new UsersService(server)
 
   server.post<RegisterRequest>("/users", { schema: RegisterSchema }, async (request, reply) => {

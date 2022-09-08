@@ -24,6 +24,7 @@
     "@ngneat/falso": "^6.1.0",
     "@prisma/client": "^4.2.1",
     "@sinclair/typebox": "^0.24.28",
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.6.5",
     "fastify": "^4.5.2",
