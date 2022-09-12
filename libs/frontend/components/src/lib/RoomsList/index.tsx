@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react"
-import { RoomsReply } from "@multi-chat/backend-schemas"
 import { roomActions, roomsAtom, userMap } from "@multi-chat/frontend/stores"
+import { RoomType } from "@multi-chat/shared/types"
 import { useStore } from "@nanostores/react"
 import React from "react"
 
@@ -14,7 +14,8 @@ const RoomsList: React.FC<Props> = () => {
 
   console.log(currentUser)
 
-  const findRecipient = (room: RoomsReply) => room.users.filter(({ email }) => email !== currentUser.email)[0]
+  const findRecipient = (room: RoomType.Base) =>
+    room.users.filter(({ email }) => email !== currentUser.email)[0]
 
   const onRoomClick = (id: number) => () => {
     roomActions.selectRoom(id)

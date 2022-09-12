@@ -13,6 +13,7 @@
     "frontend-hooks": "libs/frontend/hooks",
     "frontend-pages": "libs/frontend/pages",
     "frontend-stores": "libs/frontend/stores",
-    "shared-socket": "libs/shared/socket"
+    "shared-socket": "libs/shared/socket",
+    "shared-types": "libs/shared/types"
   }
 }

@@ -1,6 +1,6 @@
 import { Input } from "@chakra-ui/react"
-import { CreateMessageDto } from "@multi-chat/backend-schemas"
 import { allMessagesAtom, messageActions, selectedRoomAtom } from "@multi-chat/frontend/stores"
+import { MessageType } from "@multi-chat/shared/types"
 import { useStore } from "@nanostores/react"
 import { MessageContentType } from "@prisma/client"
 import React, { useState } from "react"
@@ -16,10 +16,10 @@ const Chat: React.FC<Props> = () => {
 
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.code === "Enter") {
-      const message: CreateMessageDto = {
+      const message: MessageType.Create = {
         roomId: selectedRoomId,
         contentType: MessageContentType.text,
-        contendData: {
+        contentData: {
           text: inputValue
         }
       }
@@ -32,7 +32,7 @@ const Chat: React.FC<Props> = () => {
   return (
     <div>
       {messages.map((message: any) => (
-        <div>{`${message.user.username}:  ${message.contendData.text}`}</div>
+        <div>{`${message.user.username}:  ${message.contentData.text}`}</div>
       ))}
       <Input
         placeholder="Enter..."

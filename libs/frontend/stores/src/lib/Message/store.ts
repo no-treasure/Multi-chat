@@ -1,11 +1,10 @@
 import { SocketService } from "@multi-chat/frontend/api"
-import { MessageEvent } from "@multi-chat/shared/socket"
+import { MessageType } from "@multi-chat/shared/types"
 
-import { Message } from "@prisma/client"
 import { atom } from "nanostores"
 
-export const allMessagesAtom = atom<Message[]>([])
+export const allMessagesAtom = atom<MessageType.Base[]>([])
 
-SocketService.on(MessageEvent.NEW_MESSAGE, (newMessage) => {
-  allMessagesAtom.set([...allMessagesAtom.get(), newMessage])
+SocketService.on("new_message", (payload) => {
+  allMessagesAtom.set([...allMessagesAtom.get(), payload.message])
 })

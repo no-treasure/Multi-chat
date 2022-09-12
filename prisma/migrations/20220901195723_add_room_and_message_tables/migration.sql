@@ -14,7 +14,7 @@ CREATE TABLE "Message" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "contentType" "MessageContentType" NOT NULL,
-    "contendData" JSONB NOT NULL,
+    "contentData" JSONB NOT NULL,
     "userId" INTEGER NOT NULL,
     "roomId" INTEGER NOT NULL,
 

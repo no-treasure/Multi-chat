@@ -1,10 +1,9 @@
-import { RoomsReply } from "@multi-chat/backend-schemas"
 import { SocketService } from "@multi-chat/frontend/api"
-import { RoomEvent } from "@multi-chat/shared/socket"
+import { RoomType } from "@multi-chat/shared/types"
 import { atom } from "nanostores"
 
-export const roomsAtom = atom<RoomsReply[]>([])
+export const roomsAtom = atom<RoomType.Base[]>([])
 
 export const selectedRoomAtom = atom<number | null>(null)
 
-SocketService.on(RoomEvent.LOAD_ROOMS, (rooms) => roomsAtom.set(rooms))
+SocketService.on("load_rooms", (payload) => roomsAtom.set(payload.rooms))
