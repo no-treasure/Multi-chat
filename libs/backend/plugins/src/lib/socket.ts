@@ -1,3 +1,4 @@
+import { ServerToClientEvents, ClientToServerEvents, SOCKET_PATH } from "@multi-chat/shared/socket"
 import { User } from "@prisma/client"
 import fp from "fastify-plugin"
 import { Server, ServerOptions } from "socket.io"
@@ -5,7 +6,13 @@ import { Server, ServerOptions } from "socket.io"
 type Options = Partial<ServerOptions>
 
 const socketIoPlugin = fp<Options>(async function (server) {
-  server.decorate("io", new Server(server.server, { transports: ["websocket"] }))
+  server.decorate(
+    "io",
+    new Server<ClientToServerEvents, ServerToClientEvents>(server.server, {
+      transports: ["websocket"],
+      path: SOCKET_PATH
+    })
+  )
 
   server.io.use((socket, next) => {
     const token = socket.handshake.auth.token
@@ -29,7 +36,7 @@ const socketIoPlugin = fp<Options>(async function (server) {
 
 declare module "fastify" {
   interface FastifyInstance {
-    io: Server
+    io: Server<ClientToServerEvents, ServerToClientEvents>
     user: User
   }
 }

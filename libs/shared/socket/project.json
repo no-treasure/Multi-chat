@@ -1,13 +1,13 @@
 {
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/types/src",
+  "sourceRoot": "libs/shared/socket/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/shared/types/**/*.ts"]
+        "lintFilePatterns": ["libs/shared/socket/**/*.ts"]
       }
     }
   },

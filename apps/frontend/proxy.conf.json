@@ -1,6 +1,15 @@
 {
   "/api": {
     "target": "http://localhost:3000",
-    "secure": false
+    "secure": false,
+    "ws": true,
+    "changeOrigin": true,
+    "headers": { "Connection": "keep-alive" }
+  },
+  "/socket": {
+    "target": "ws://localhost:3000",
+    "secure": false,
+    "ws": true,
+    "changeOrigin": true
   }
 }

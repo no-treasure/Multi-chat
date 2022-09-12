@@ -1,17 +1,18 @@
-import React from "react"
-import { Box, Button, Image, useColorMode } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
+import { Chat, RoomsList } from "@multi-chat/frontend/components"
+import { selectedRoomAtom } from "@multi-chat/frontend/stores"
+import { useStore } from "@nanostores/react"
 
 const RootPage = () => {
-  const { colorMode, toggleColorMode } = useColorMode()
+  const selectedRoom = useStore(selectedRoomAtom)
 
   return (
     <>
       <Box bg="blue.300" flexBasis="500" flexShrink="1">
-        CHAT_LIST
+        <RoomsList />
       </Box>
       <Box bg="blue.700" flexBasis="100%" flexGrow="2">
-        CHAT
-        <Button onClick={toggleColorMode}>Toggle {colorMode === "light" ? "Dark" : "Light"}</Button>
+        {selectedRoom ? <Chat /> : "Choose chat in chat list"}
       </Box>
     </>
   )

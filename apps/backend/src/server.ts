@@ -33,7 +33,7 @@ const buildServer = fp(async (server) => {
   server.register(roomModule)
 
   // # Routes
-  server.register(usersRoute)
+  server.register(usersRoute, { prefix: "/api" })
 })
 
 export { buildServer }

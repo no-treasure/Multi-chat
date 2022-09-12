@@ -1,6 +1,11 @@
+import {} from "@fastify/swagger"
+
 export * from "./lib/config"
 export * from "./lib/error"
 export * from "./lib/users/register"
 export * from "./lib/users/user-reply"
 export * from "./lib/users/update-user"
 export * from "./lib/users/login"
+export * from "./lib/rooms/rooms-reply"
+export * from "./lib/messages/message-reply"
+export * from "./lib/messages/create-message-dto"

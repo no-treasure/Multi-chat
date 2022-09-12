@@ -16,16 +16,16 @@
     "baseUrl": ".",
     "jsx": "react",
     "paths": {
+      "@multi-chat/backend-schemas": ["libs/backend/schemas/src/index.ts"],
       "@multi-chat/backend/constants": ["libs/backend/constants/src/index.ts"],
       "@multi-chat/backend/modules": ["libs/backend/modules/src/index.ts"],
       "@multi-chat/backend/plugins": ["libs/backend/plugins/src/index.ts"],
-      "@multi-chat/backend/schemas": ["libs/backend/schemas/src/index.ts"],
       "@multi-chat/frontend/api": ["libs/frontend/api/src/index.ts"],
       "@multi-chat/frontend/components": ["libs/frontend/components/src/index.ts"],
       "@multi-chat/frontend/hooks": ["libs/frontend/hooks/src/index.ts"],
       "@multi-chat/frontend/pages": ["libs/frontend/pages/src/index.ts"],
       "@multi-chat/frontend/stores": ["libs/frontend/stores/src/index.ts"],
-      "@multi-chat/shared/types": ["libs/shared/types/src/index.ts"]
+      "@multi-chat/shared/socket": ["libs/shared/socket/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

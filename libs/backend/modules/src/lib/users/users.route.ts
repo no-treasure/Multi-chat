@@ -1,4 +1,4 @@
-import { LoginRequest, LoginSchema, RegisterRequest, RegisterSchema } from "@multi-chat/backend/schemas"
+import { LoginRequest, LoginSchema, RegisterRequest, RegisterSchema } from "@multi-chat/backend-schemas"
 import { FastifyPluginAsync } from "fastify"
 import { compare } from "bcryptjs"
 import { usersErrors } from "@multi-chat/backend/constants"
@@ -18,7 +18,7 @@ const usersRoute: FastifyPluginAsync = async (server) => {
     const createdUser = await usersService.createUser(request.body)
 
     reply.status(201)
-    return { user: usersService.buildUserResponse(createdUser) }
+    return usersService.buildUserResponse(createdUser)
   })
 
   server.post<LoginRequest>("/users/login", { schema: LoginSchema }, async (request, reply) => {
@@ -32,7 +32,7 @@ const usersRoute: FastifyPluginAsync = async (server) => {
     if (!isCorrectPass) throw server.httpErrors.unauthorized(usersErrors.WRONG_PASS_ERROR)
 
     reply.status(200)
-    return { user: usersService.buildUserResponse(existUser) }
+    return usersService.buildUserResponse(existUser)
   })
 
   // TEST

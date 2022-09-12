@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify"
 
 import { User } from "@prisma/client"
-import { CreateUserDto, UpdateUserDto } from "@multi-chat/backend/schemas"
+import { CreateUserDto, UpdateUserDto } from "@multi-chat/backend-schemas"
 
 class UsersRepository {
   server: FastifyInstance

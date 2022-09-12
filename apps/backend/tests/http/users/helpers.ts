@@ -1,4 +1,4 @@
-import { CreateUserDto } from "@multi-chat/backend/schemas"
+import { CreateUserDto } from "@multi-chat/backend-schemas"
 import { randSuperhero, randPassword, randEmail } from "@ngneat/falso"
 
 export const fakeUserDto = (): CreateUserDto => ({

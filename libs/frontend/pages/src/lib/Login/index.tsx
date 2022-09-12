@@ -1,6 +1,6 @@
-import { Flex, Text, Input, Button, FormControl } from "@chakra-ui/react"
+import { Flex, Text, Input, Button } from "@chakra-ui/react"
 import { PasswordInput } from "@multi-chat/frontend/components"
-import { isLoggedInAtom } from "@multi-chat/frontend/stores"
+import { userActions } from "@multi-chat/frontend/stores"
 import { useState } from "react"
 import { Logo } from "./styled"
 
@@ -15,7 +15,7 @@ const LoginPage: React.FC<Props> = () => {
   const showNextButton = Boolean(email.length && password.length)
 
   const onLoginUser = () => {
-    // isLoggedInAtom.set(true)
+    userActions.login({ user: { email, password } })
   }
 
   return (

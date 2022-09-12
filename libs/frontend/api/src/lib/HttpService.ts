@@ -1,10 +1,10 @@
-import { authToken } from "@multi-chat/frontend/stores"
 import axios from "axios"
+import { authToken } from "./authToken"
 
 const HttpService = axios.create({
   baseURL: "/api",
   headers: {
-    Authorization: `Basic ${authToken.get()}`
+    // Authorization: `Bearer ${authToken.get()}`
   }
 })
 
