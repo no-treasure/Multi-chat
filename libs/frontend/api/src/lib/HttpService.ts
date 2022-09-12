@@ -1,11 +1,15 @@
 import axios from "axios"
 import { authToken } from "./authToken"
 
-const HttpService = axios.create({
-  baseURL: "/api",
-  headers: {
-    // Authorization: `Bearer ${authToken.get()}`
-  }
-})
+const HttpServiceBase = () => {
+  const token = authToken.get()
 
-export { HttpService }
+  return axios.create({
+    baseURL: "/api",
+    headers: {
+      Authorization: token ? `Bearer ${token}` : ""
+    }
+  })
+}
+
+export const HttpService = HttpServiceBase()

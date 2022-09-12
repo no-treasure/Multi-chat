@@ -7,4 +7,4 @@ export const roomsAtom = atom<RoomsReply[]>([])
 
 export const selectedRoomAtom = atom<number | null>(null)
 
-SocketService.socket.on(RoomEvent.LOAD_ROOMS, (rooms) => roomsAtom.set(rooms))
+SocketService.on(RoomEvent.LOAD_ROOMS, (rooms) => roomsAtom.set(rooms))

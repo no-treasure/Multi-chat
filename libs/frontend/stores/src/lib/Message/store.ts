@@ -6,6 +6,6 @@ import { atom } from "nanostores"
 
 export const allMessagesAtom = atom<Message[]>([])
 
-SocketService.socket.on(MessageEvent.NEW_MESSAGE, (newMessage) => {
+SocketService.on(MessageEvent.NEW_MESSAGE, (newMessage) => {
   allMessagesAtom.set([...allMessagesAtom.get(), newMessage])
 })

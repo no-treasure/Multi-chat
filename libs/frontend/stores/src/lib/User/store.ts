@@ -1,15 +1,22 @@
-import { map } from "nanostores"
+import { persistentMap } from "@nanostores/persistent"
 
-interface UserValue {
+type UserValue = {
   email: string
   username: string
-  image: string | null
+  image?: string
   token: string
 }
 
-export const userMap = map<UserValue>({
-  email: "",
-  username: "",
-  image: null,
-  token: ""
-})
+// TODO: Make not persistent
+export const userMap = persistentMap<UserValue>(
+  "user",
+  {
+    email: "",
+    username: "",
+    token: ""
+  },
+  {
+    encode: JSON.stringify,
+    decode: JSON.parse
+  }
+)
