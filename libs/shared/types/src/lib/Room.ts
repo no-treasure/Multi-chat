@@ -1,3 +1,7 @@
-import { Prisma } from "@prisma/client"
+import { Room, User } from "@prisma/client"
+import { MessageType } from ".."
 
-export type Base = Prisma.RoomGetPayload<{ include: { users: true; messages: true } }>
+export type Base = Room & {
+  users: Array<User>
+  messages: Array<MessageType.Base>
+}

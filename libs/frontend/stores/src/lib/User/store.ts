@@ -1,6 +1,7 @@
 import { persistentMap } from "@nanostores/persistent"
 
 type UserValue = {
+  id: number
   email: string
   username: string
   image?: string
@@ -11,6 +12,7 @@ type UserValue = {
 export const userMap = persistentMap<UserValue>(
   "user",
   {
+    id: 0,
     email: "",
     username: "",
     token: ""

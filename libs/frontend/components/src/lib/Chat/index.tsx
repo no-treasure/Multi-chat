@@ -5,7 +5,7 @@ import { allMessagesAtom, messageActions, selectedRoomAtom } from "@multi-chat/f
 import { MessageType } from "@multi-chat/shared/types"
 import { useStore } from "@nanostores/react"
 import { MessageContentType } from "@prisma/client"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useState } from "react"
 
 type Props = {
   //

@@ -12,7 +12,7 @@ const RootPage = () => {
         <RoomsList />
       </Box>
       <Box bg="blue.700" flexBasis="100%" flexGrow="2">
-        {selectedRoom ? <Chat /> : "Choose chat in chat list"}
+        {selectedRoom && <Chat />}
       </Box>
     </>
   )

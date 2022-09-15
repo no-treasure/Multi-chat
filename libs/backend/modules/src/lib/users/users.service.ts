@@ -34,7 +34,7 @@ class UsersService {
 
   buildUserResponse(user: User): UserReplyType {
     const userResponse = pipe(
-      pick(["email", "username", "image"]),
+      pick(["email", "username", "image", "id"]),
       assoc("token", this.server.jwt.sign(user))
     )(user)
 

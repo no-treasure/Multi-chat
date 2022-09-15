@@ -13,7 +13,7 @@ class RoomRepository {
       take: pagination.take,
       skip: pagination.skip,
       where: { users: { some: { id: { equals: user.id } } } },
-      include: { users: true, messages: { take: 1 } }
+      include: { users: true, messages: { take: 1, orderBy: { createdAt: "desc" } } }
     })
 
     return some
