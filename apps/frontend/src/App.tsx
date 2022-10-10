@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Route, Routes, useNavigate } from "react-router-dom"
 
-import { LoginPage, NotFoundPage, RootPage } from "@multi-chat/frontend/pages"
+import { LoginPage, NotFoundPage, RootPage, RegisterPage } from "@multi-chat/frontend/pages"
 import { Layout } from "@multi-chat/frontend/components"
 import { useStore } from "@nanostores/react"
 import { isLoggedInAtom } from "@multi-chat/frontend/stores"
@@ -28,7 +28,10 @@ export function App() {
             <Route path="settings" element={<RootPage />} />
           </>
         ) : (
-          <Route path="login" element={<LoginPage />} />
+          <>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+          </>
         )}
       </Route>
       <Route path="*" element={<NotFoundPage />} />
