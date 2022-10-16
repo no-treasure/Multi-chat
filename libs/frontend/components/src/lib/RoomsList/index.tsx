@@ -1,9 +1,11 @@
 import { Avatar, Flex, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react"
-import { roomActions, roomsAtom, userMap } from "@multi-chat/frontend/stores"
-import { RoomType } from "@multi-chat/shared/types"
 import { useStore } from "@nanostores/react"
 import { prop, sortBy } from "ramda"
 import React from "react"
+
+import { RoomType } from "@multi-chat/shared/types"
+import { roomActions, roomsAtom, userMap } from "@multi-chat/frontend/stores"
+
 import { Menu } from "./Menu"
 import { Search } from "./Search"
 
@@ -17,8 +19,7 @@ const RoomsList: React.FC<Props> = () => {
   const rooms = useStore(roomsAtom)
   const currentUser = useStore(userMap)
 
-  const findRecipient = (room: RoomType.Base) =>
-    room.users.filter(({ email }) => email !== currentUser.email)[0]
+  const findRecipient = (room: RoomType.Base) => room.users.filter(({ email }) => email !== currentUser.email)[0]
 
   const onRoomClick = (id: number) => () => {
     roomActions.selectRoom(id)
@@ -26,7 +27,7 @@ const RoomsList: React.FC<Props> = () => {
 
   return (
     <>
-      <Flex p={"6px 13px 8px"}>
+      <Flex p="6px 13px 8px">
         <Menu />
         <Search />
       </Flex>
@@ -59,8 +60,8 @@ const RoomsList: React.FC<Props> = () => {
               )
             })}
           </TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel />
+          <TabPanel />
         </TabPanels>
       </Tabs>
     </>

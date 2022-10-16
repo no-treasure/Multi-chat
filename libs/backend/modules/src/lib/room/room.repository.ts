@@ -1,13 +1,13 @@
-import { RoomType } from "@multi-chat/shared/types"
 import { User } from "@prisma/client"
 import { FastifyInstance } from "fastify"
+
+import { RoomType } from "@multi-chat/shared/types"
 
 class RoomRepository {
   server: FastifyInstance
   constructor(server: FastifyInstance) {
     this.server = server
   }
-
   allUserRooms(user: User, pagination = { take: 10, skip: 0 }): Promise<RoomType.Base[]> {
     const some = this.server.prisma.room.findMany({
       take: pagination.take,

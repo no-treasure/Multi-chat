@@ -1,4 +1,5 @@
 import Fastify from "fastify"
+
 import { pinoLogger } from "@multi-chat/backend/constants"
 
 import { buildServer } from "../src/server"

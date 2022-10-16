@@ -1,13 +1,5 @@
 import { AddIcon, DownloadIcon, SettingsIcon, HamburgerIcon, MoonIcon } from "@chakra-ui/icons"
-import {
-  Menu as ChakraMenu,
-  IconButton,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Switch,
-  useColorMode
-} from "@chakra-ui/react"
+import { Menu as ChakraMenu, IconButton, MenuButton, MenuItem, MenuList, Switch, useColorMode } from "@chakra-ui/react"
 import React from "react"
 
 type Props = {

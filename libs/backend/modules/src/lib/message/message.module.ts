@@ -1,4 +1,5 @@
 import { FastifyPluginAsync } from "fastify"
+
 import { MessageController } from "./message.controller"
 
 const messageModule: FastifyPluginAsync = async (server): Promise<void> => {
