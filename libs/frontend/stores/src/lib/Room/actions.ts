@@ -1,5 +1,7 @@
-import { MessageType } from "@multi-chat/shared/types"
 import { action } from "nanostores"
+
+import { MessageType } from "@multi-chat/shared/types"
+
 import { messageActions } from "../Message"
 import { roomsAtom, selectedRoomAtom } from "./store"
 

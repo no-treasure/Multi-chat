@@ -1,6 +1,7 @@
 import { Static, Type } from "@sinclair/typebox"
 import { FastifySchema } from "fastify"
 import { RouteGenericInterface } from "fastify/types/route"
+
 import { ErrorReply } from "../error"
 import { UserReply, UserReplyType } from "./user-reply"
 

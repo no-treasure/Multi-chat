@@ -1,7 +1,8 @@
 import fp from "fastify-plugin"
 import fastifyEnv, { fastifyEnvOpt } from "@fastify/env"
-import { ConfigSchema } from "@multi-chat/backend-schemas"
 import { Static } from "@sinclair/typebox"
+
+import { ConfigSchema } from "@multi-chat/backend-schemas"
 
 declare module "fastify" {
   interface FastifyInstance {

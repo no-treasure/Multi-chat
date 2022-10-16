@@ -1,6 +1,7 @@
+import { atom } from "nanostores"
+
 import { SocketService } from "@multi-chat/frontend/api"
 import { RoomType } from "@multi-chat/shared/types"
-import { atom } from "nanostores"
 
 export const roomsAtom = atom<RoomType.Base[]>([])
 

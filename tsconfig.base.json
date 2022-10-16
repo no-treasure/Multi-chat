@@ -22,7 +22,6 @@
       "@multi-chat/backend/plugins": ["libs/backend/plugins/src/index.ts"],
       "@multi-chat/frontend/api": ["libs/frontend/api/src/index.ts"],
       "@multi-chat/frontend/components": ["libs/frontend/components/src/index.ts"],
-      "@multi-chat/frontend/hooks": ["libs/frontend/hooks/src/index.ts"],
       "@multi-chat/frontend/pages": ["libs/frontend/pages/src/index.ts"],
       "@multi-chat/frontend/stores": ["libs/frontend/stores/src/index.ts"],
       "@multi-chat/shared/socket": ["libs/shared/socket/src/index.ts"],

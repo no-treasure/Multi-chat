@@ -1,11 +1,12 @@
 import { ArrowRightIcon, AttachmentIcon, PhoneIcon } from "@chakra-ui/icons"
 import { Box, Flex, Input } from "@chakra-ui/react"
 import styled from "@emotion/styled"
-import { allMessagesAtom, messageActions, selectedRoomAtom } from "@multi-chat/frontend/stores"
-import { MessageType } from "@multi-chat/shared/types"
 import { useStore } from "@nanostores/react"
 import { MessageContentType } from "@prisma/client"
 import React, { useState } from "react"
+
+import { MessageType } from "@multi-chat/shared/types"
+import { allMessagesAtom, messageActions, selectedRoomAtom } from "@multi-chat/frontend/stores"
 
 type Props = {
   //
@@ -59,15 +60,7 @@ const Chat: React.FC<Props> = () => {
       </ScrollContainer>
 
       <Flex p={2}>
-        <Flex
-          justify="center"
-          alignItems="center"
-          background="blue.800"
-          w="100%"
-          p={4}
-          pl={0}
-          borderRadius="0.75rem"
-        >
+        <Flex justify="center" alignItems="center" background="blue.800" w="100%" p={4} pl={0} borderRadius="0.75rem">
           <Box pl={4} pr={4}>
             <AttachmentIcon width={8} height={8} />
           </Box>
