@@ -1,5 +1,4 @@
 import { map } from "nanostores"
-import { action } from "nanostores"
 
 type RegisterMapState = {
   email: string

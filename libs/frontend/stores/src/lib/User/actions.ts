@@ -10,6 +10,7 @@ export const login = action(userMap, "login", (store, params: LoginUserDto) => {
   task(async () => {
     const { data } = await HttpService.post<UserReplyType>("/users/login", params)
     store.set(data.user)
+
     isLoggedInAtom.set(true)
     authToken.set(data.user.token)
   })
