@@ -1,6 +1,7 @@
-import fp from "fastify-plugin"
 import { readFileSync } from "node:fs"
 import { join } from "node:path"
+
+import fp from "fastify-plugin"
 
 import {
   prismaPlugin,
@@ -26,6 +27,7 @@ const buildServer = fp(async (server) => {
   // # Test socket TODO: remove later
   server.get("/", async (req, reply) => {
     const data = readFileSync(join(sourceRoot, "index.html"))
+
     reply.header("content-type", "text/html; charset=utf-8")
     reply.send(data)
   })

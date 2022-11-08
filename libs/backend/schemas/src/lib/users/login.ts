@@ -1,6 +1,7 @@
 import { FastifySchema } from "fastify"
 import { Static, Type } from "@sinclair/typebox"
 import { RouteGenericInterface } from "fastify/types/route"
+
 import { UserReply, UserReplyType } from "./user-reply"
 
 const LoginUserDto = Type.Object({

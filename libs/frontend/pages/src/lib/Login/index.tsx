@@ -1,7 +1,9 @@
 import { Flex, Text, Input, Button } from "@chakra-ui/react"
+import { useState } from "react"
+
 import { PasswordInput } from "@multi-chat/frontend/components"
 import { userActions } from "@multi-chat/frontend/stores"
-import { useState } from "react"
+
 import { Logo } from "./styled"
 import { Link } from "react-router-dom";
 

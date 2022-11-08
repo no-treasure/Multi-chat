@@ -1,12 +1,12 @@
 import { useEffect } from "react"
 import { Route, Routes, useNavigate } from "react-router-dom"
+import { useStore } from "@nanostores/react"
 
 import { LoginPage, NotFoundPage, RootPage, RegisterPage } from "@multi-chat/frontend/pages"
 import { Layout } from "@multi-chat/frontend/components"
-import { useStore } from "@nanostores/react"
 import { isLoggedInAtom } from "@multi-chat/frontend/stores"
 
-export function App() {
+const App = () => {
   const isLoggedIn = useStore(isLoggedInAtom)
 
   const navigate = useNavigate()

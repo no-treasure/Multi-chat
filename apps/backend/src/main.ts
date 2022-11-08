@@ -1,5 +1,6 @@
-import { pinoLogger } from "@multi-chat/backend/constants"
 import Fastify from "fastify"
+
+import { pinoLogger } from "@multi-chat/backend/constants"
 
 import { buildServer } from "./server"
 
@@ -15,8 +16,7 @@ const start = async () => {
 
     server.swagger()
   } catch (err) {
-    server.log.error(err)
-    process.exit(1)
+    throw new Error(err)
   }
 }
 

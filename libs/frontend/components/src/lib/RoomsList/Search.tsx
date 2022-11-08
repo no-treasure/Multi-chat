@@ -6,13 +6,13 @@ type Props = {
   //
 }
 
-const Search: React.FC<Props> = () => {
-  return (
-    <InputGroup ml="13px">
-      <InputLeftElement children={<Search2Icon width={4} height={4} />} />
-      <Input variant="telegram" placeholder="Search" />
-    </InputGroup>
-  )
-}
+const Search: React.FC<Props> = () => (
+  <InputGroup ml="13px">
+    <InputLeftElement>
+      <Search2Icon width={4} height={4} />
+    </InputLeftElement>
+    <Input variant="telegram" placeholder="Search" />
+  </InputGroup>
+)
 
 export { Search }

@@ -1,11 +1,12 @@
-import { ServerToClientEvents, ClientToServerEvents, SOCKET_PATH } from "@multi-chat/shared/socket"
 import { User } from "@prisma/client"
 import fp from "fastify-plugin"
 import { Server, ServerOptions } from "socket.io"
 
+import { ServerToClientEvents, ClientToServerEvents, SOCKET_PATH } from "@multi-chat/shared/socket"
+
 type Options = Partial<ServerOptions>
 
-const socketIoPlugin = fp<Options>(async function (server) {
+const socketIoPlugin = fp<Options>(async (server) => {
   server.decorate(
     "io",
     new Server<ClientToServerEvents, ServerToClientEvents>(server.server, {
@@ -15,7 +16,7 @@ const socketIoPlugin = fp<Options>(async function (server) {
   )
 
   server.io.use((socket, next) => {
-    const token = socket.handshake.auth.token
+    const { token } = socket.handshake.auth
 
     const user = server.jwt.verify<User>(token)
 

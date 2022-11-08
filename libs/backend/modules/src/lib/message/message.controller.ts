@@ -1,4 +1,5 @@
 import { FastifyInstance } from "fastify"
+
 import { BackendSocket } from "@multi-chat/shared/socket"
 
 import MessageRepository from "./message.repository"
@@ -15,7 +16,6 @@ class MessageController {
     this.onLoadMessages()
     this.onSendMessage()
   }
-
   onLoadMessages() {
     this.socket.on("load_messages", async (selectedRoomId, callback) => {
       const messages = await this.messageRepository.loadMessages(selectedRoomId)
@@ -25,7 +25,6 @@ class MessageController {
       callback({ messages })
     })
   }
-
   onSendMessage() {
     this.socket.on("send_message", async ({ message }) => {
       const newMessage = await this.messageRepository.createMessage(message, this.server.user.id)

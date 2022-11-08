@@ -1,7 +1,9 @@
-import { MessageType } from "@multi-chat/shared/types"
 import { action } from "nanostores"
-import { allMessagesAtom } from "./store"
+
+import { MessageType } from "@multi-chat/shared/types"
 import { SocketService } from "@multi-chat/frontend/api"
+
+import { allMessagesAtom } from "./store"
 
 export const loadMessages = action(allMessagesAtom, "all_messages", (store, selectedRoom: number) => {
   SocketService.emit("load_messages", selectedRoom, (payload) => {
