@@ -5,6 +5,7 @@ import { authToken, HttpService } from "@multi-chat/frontend/api"
 
 import { userMap } from "../User/index"
 import { isLoggedInAtom } from "../Auth"
+import { registerMap } from "./store"
 
 export const register = action(userMap, "login", (store, params: CreateUserDto) => {
   task(async () =>
@@ -14,4 +15,7 @@ export const register = action(userMap, "login", (store, params: CreateUserDto) 
       authToken.set(data.user.token)
     })
   )
+})
+export const change = action(registerMap, "changeEmailInput", (store, key, value) => {
+  store.setKey(key, value)
 })

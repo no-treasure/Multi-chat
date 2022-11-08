@@ -1,16 +1,13 @@
-import React from "react"
+import { FC } from "react"
 import { Link } from "react-router-dom"
 import { Logo } from "../Login/styled"
 import { Flex, Text, Input, Button } from "@chakra-ui/react"
-import { useState } from "react"
+import { useStore } from "@nanostores/react"
 import { PasswordInput } from "@multi-chat/frontend/components"
-import { registerActions } from "@multi-chat/frontend/stores"
+import { registerActions, registerMap } from "@multi-chat/frontend/stores"
 
-const RegisterPage: React.FC = () => {
-  const [email, changeEmail] = useState("")
-  const [password, changePassword] = useState("")
-  const [checkPass, changeCheckPass] = useState("")
-  const [username, changeName] = useState("")
+const RegisterPage: FC = () => {
+  const { email, username, password, checkPass } = useStore(registerMap)
 
   const showRegisterButton = email.length && password.length && username.length && password === checkPass
 
@@ -38,7 +35,7 @@ const RegisterPage: React.FC = () => {
 
       <Input
         onChange={(e) => {
-          changeEmail(e.target.value)
+          registerActions.change("email", e.target.value)
         }}
         value={email}
         type="email"
@@ -50,7 +47,7 @@ const RegisterPage: React.FC = () => {
 
       <Input
         onChange={(e) => {
-          changeName(e.target.value)
+          registerActions.change("username", e.target.value)
         }}
         value={username}
         type="text"
@@ -60,9 +57,12 @@ const RegisterPage: React.FC = () => {
         size="lg"
       />
 
-      <PasswordInput value={password} onChange={(e) => changePassword(e.target.value)} />
+      <PasswordInput value={password} onChange={(e) => registerActions.change("password", e.target.value)} />
 
-      <PasswordInput value={checkPass} onChange={(e) => changeCheckPass(e.target.value)} />
+      <PasswordInput
+        value={checkPass}
+        onChange={(e) => registerActions.change("checkPass", e.target.value)}
+      />
 
       {showRegisterButton ? <Button onClick={(e) => onRegisterUser()}>Register</Button> : ""}
     </Flex>
