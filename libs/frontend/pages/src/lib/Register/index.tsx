@@ -35,7 +35,7 @@ const RegisterPage: FC = () => {
 
       <Input
         onChange={(e) => {
-          registerActions.change("email", e.target.value)
+          registerMap.setKey("email", e.target.value)
         }}
         value={email}
         type="email"
@@ -47,7 +47,7 @@ const RegisterPage: FC = () => {
 
       <Input
         onChange={(e) => {
-          registerActions.change("username", e.target.value)
+          registerMap.setKey("username", e.target.value)
         }}
         value={username}
         type="text"
@@ -57,12 +57,9 @@ const RegisterPage: FC = () => {
         size="lg"
       />
 
-      <PasswordInput value={password} onChange={(e) => registerActions.change("password", e.target.value)} />
+      <PasswordInput value={password} onChange={(e) => registerMap.setKey("password", e.target.value)} />
 
-      <PasswordInput
-        value={checkPass}
-        onChange={(e) => registerActions.change("checkPass", e.target.value)}
-      />
+      <PasswordInput value={checkPass} onChange={(e) => registerMap.setKey("checkPass", e.target.value)} />
 
       {showRegisterButton ? <Button onClick={(e) => onRegisterUser()}>Register</Button> : ""}
     </Flex>
