@@ -5,7 +5,7 @@ import { PasswordInput } from "@multi-chat/frontend/components"
 import { userActions } from "@multi-chat/frontend/stores"
 
 import { Logo } from "./styled"
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 type Props = {
   //
@@ -33,7 +33,7 @@ const LoginPage: React.FC<Props> = () => {
       <Text fontSize="md" mb="5">
         You don't have an account?
         <Link to="/register">
-          <Text textAlign = "center" mt = "5px" color="blue">
+          <Text textAlign="center" mt="5px" color="blue">
             Register now!
           </Text>
         </Link>

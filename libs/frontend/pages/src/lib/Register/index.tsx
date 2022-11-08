@@ -1,22 +1,21 @@
-import React from 'react'
-import { Link, useNavigate  } from 'react-router-dom'
-import { Logo} from '../Login/styled'
+import React from "react"
+import { Link } from "react-router-dom"
+import { Logo } from "../Login/styled"
 import { Flex, Text, Input, Button } from "@chakra-ui/react"
-import { useState } from 'react'
-import { PasswordInput } from '@multi-chat/frontend/components'
-
+import { useState } from "react"
+import { PasswordInput } from "@multi-chat/frontend/components"
+import { registerActions } from "@multi-chat/frontend/stores"
 
 const RegisterPage: React.FC = () => {
-  const navigate = useNavigate()
   const [email, changeEmail] = useState("")
   const [password, changePassword] = useState("")
   const [checkPass, changeCheckPass] = useState("")
-  const [name, changeName] = useState("")
+  const [username, changeName] = useState("")
 
-  const showNextButton = (email.length && password.length && name.length && password === checkPass)
-  const submitData = ():void => {
-    navigate('/login')//временно чтоб потыкать
-    //post/put data on server realese in here
+  const showRegisterButton = email.length && password.length && username.length && password === checkPass
+
+  const onRegisterUser = (): void => {
+    registerActions.register({ user: { email, username, password } })
   }
 
   return (
@@ -31,14 +30,16 @@ const RegisterPage: React.FC = () => {
       <Text fontSize="md" mb="5">
         Do you already have an account?
         <Link to="/login">
-          <Text textAlign = "center" mt = "5px" color="blue">
+          <Text textAlign="center" mt="5px" color="blue">
             Login now!
           </Text>
         </Link>
       </Text>
 
       <Input
-        onChange={(e)=> {changeEmail(e.target.value)}}
+        onChange={(e) => {
+          changeEmail(e.target.value)
+        }}
         value={email}
         type="email"
         placeholder="Your email"
@@ -48,8 +49,10 @@ const RegisterPage: React.FC = () => {
       />
 
       <Input
-        onChange={(e)=> {changeName(e.target.value)}}
-        value={name}
+        onChange={(e) => {
+          changeName(e.target.value)
+        }}
+        value={username}
         type="text"
         placeholder="Enter your name"
         mb="6"
@@ -61,10 +64,9 @@ const RegisterPage: React.FC = () => {
 
       <PasswordInput value={checkPass} onChange={(e) => changeCheckPass(e.target.value)} />
 
-      {showNextButton ? <Button onClick = {(e)=>submitData()}>Confirm</Button> : ''}
-
+      {showRegisterButton ? <Button onClick={(e) => onRegisterUser()}>Register</Button> : ""}
     </Flex>
   )
 }
 
-export {RegisterPage} 
+export { RegisterPage }
