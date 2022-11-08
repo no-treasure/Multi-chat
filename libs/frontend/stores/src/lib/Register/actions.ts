@@ -16,6 +16,6 @@ export const register = action(userMap, "login", (store, params: CreateUserDto) 
     })
   )
 })
-export const change = action(registerMap, "changeEmailInput", (store, key, value) => {
+export const change = action(registerMap, "change", (store, key, value) => {
   store.setKey(key, value)
 })
