@@ -9,8 +9,8 @@ import { isLoggedInAtom } from "../Auth"
 export const register = action(userMap, "login", (store, params: CreateUserDto) => {
   task(async () => {
     const { data } = await HttpService.post<UserReplyType>("/users", params)
-    store.set(data.user)
 
+    store.set(data.user)
     isLoggedInAtom.set(true)
     authToken.set(data.user.token)
   })
