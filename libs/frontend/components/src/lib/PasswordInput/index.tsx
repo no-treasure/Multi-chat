@@ -11,7 +11,7 @@ const PasswordInput: React.FC<Props> = ({ value, onChange }) => {
   const handleClick = () => setShow(!show)
 
   return (
-    <InputGroup size="lg">
+    <InputGroup size="lg" mb="6">
       <Input
         value={value}
         onChange={onChange}

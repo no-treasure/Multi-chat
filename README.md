@@ -29,6 +29,7 @@ npm run start
 
 ```bash
 docker-compose up --build
+npx prisma migrate deploy
 npm run start:backend
 ```
 
