@@ -1,13 +1,13 @@
-import { Avatar, Flex, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react"
+import { Flex, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
 import { useStore } from "@nanostores/react"
 import { prop, sortBy } from "ramda"
 import React from "react"
 
-import { RoomType } from "@multi-chat/shared/types"
-import { roomActions, roomsAtom, userMap } from "@multi-chat/frontend/stores"
+import { roomsAtom } from "@multi-chat/frontend/stores"
 
 import { Menu } from "./Menu"
 import { Search } from "./Search"
+import Room from "./Room"
 
 type Props = {
   //
@@ -17,13 +17,6 @@ const sortByCreatedDate = sortBy(prop("createdAt"))
 
 const RoomsList: React.FC<Props> = () => {
   const rooms = useStore(roomsAtom)
-  const currentUser = useStore(userMap)
-
-  const findRecipient = (room: RoomType.Base) => room.users.filter(({ email }) => email !== currentUser.email)[0]
-
-  const onRoomClick = (id: number) => () => {
-    roomActions.selectRoom(id)
-  }
 
   return (
     <>
@@ -41,24 +34,9 @@ const RoomsList: React.FC<Props> = () => {
 
         <TabPanels>
           <TabPanel>
-            {sortByCreatedDate(rooms).map((room) => {
-              const recipient = findRecipient(room)
-              const lastMessage = room.messages[0]!
-
-              return (
-                <Flex key={`room-${room.id}`} p="9px" onClick={onRoomClick(room.id)}>
-                  <Avatar name={recipient.username} src={recipient.image!} mr="8px" />
-                  <Flex direction="column">
-                    <Text fontSize="md">{recipient.username}</Text>
-                    <Text fontSize="md">
-                      {lastMessage.userId === currentUser.id
-                        ? `You: ${lastMessage.contentData.text}`
-                        : lastMessage.contentData!.text}
-                    </Text>
-                  </Flex>
-                </Flex>
-              )
-            })}
+            {sortByCreatedDate(rooms).map((room) => (
+              <Room key={room.id} {...room} />
+            ))}
           </TabPanel>
           <TabPanel />
           <TabPanel />
