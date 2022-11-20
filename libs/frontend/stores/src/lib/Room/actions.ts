@@ -15,10 +15,11 @@ export const updateRoomLastMessage = action(
   "updateLastMessage",
   (store, { roomId, message }: { roomId: number; message: MessageType.Base }) => {
     const room = store.get().find(({ id }) => id === roomId)
+    const withoutCurrentRoom = store.get().filter(({ id }) => id !== roomId)
 
     if (room) {
       room.messages = [message]
-      store.set([...store.get(), room])
+      store.set([...withoutCurrentRoom, room])
     }
   }
 )

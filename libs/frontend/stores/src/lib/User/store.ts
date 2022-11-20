@@ -8,17 +8,14 @@ type UserValue = {
   token: string
 }
 
+export const initialUserMap: UserValue = {
+  id: 0,
+  email: "",
+  username: "",
+  token: ""
+}
 // TODO: Make not persistent
-export const userMap = persistentMap<UserValue>(
-  "user",
-  {
-    id: 0,
-    email: "",
-    username: "",
-    token: ""
-  },
-  {
-    encode: JSON.stringify,
-    decode: JSON.parse
-  }
-)
+export const userMap = persistentMap<UserValue>("user", initialUserMap, {
+  encode: JSON.stringify,
+  decode: JSON.parse
+})

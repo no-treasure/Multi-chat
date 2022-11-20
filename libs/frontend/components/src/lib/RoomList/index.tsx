@@ -15,7 +15,7 @@ type Props = {
 
 const sortByCreatedDate = sortBy(prop("createdAt"))
 
-const RoomsList: React.FC<Props> = () => {
+const RoomList: React.FC<Props> = () => {
   const rooms = useStore(roomsAtom)
 
   return (
@@ -46,4 +46,4 @@ const RoomsList: React.FC<Props> = () => {
   )
 }
 
-export { RoomsList }
+export { RoomList }
