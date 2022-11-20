@@ -1,12 +1,13 @@
-import { ArrowRightIcon, AttachmentIcon, PhoneIcon } from "@chakra-ui/icons"
-import { Box, Flex, Input } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 import { useStore } from "@nanostores/react"
-import { MessageContentType } from "@prisma/client"
-import React, { useState } from "react"
+import { FC, useRef } from "react"
 
-import { MessageType } from "@multi-chat/shared/types"
-import { allMessagesAtom, messageActions, selectedRoomAtom } from "@multi-chat/frontend/stores"
+import { useAutoScroll } from "@multi-chat/frontend/hooks"
+import { allMessagesAtom } from "@multi-chat/frontend/stores"
+
+import { ChatInput } from "./ChatInput"
+import { Message } from "./Message"
 
 type Props = {
   //
@@ -18,75 +19,22 @@ const ScrollContainer = styled(Box)`
   }
 `
 
-const Chat: React.FC<Props> = () => {
-  const [inputValue, setInputValue] = useState("")
-  const selectedRoomId = useStore(selectedRoomAtom)!
+const Chat: FC<Props> = () => {
   const messages = useStore(allMessagesAtom)
+  const chatBoxRef = useRef<HTMLDivElement>(null)
 
-  const sendMessage = () => {
-    if (inputValue === "") return
-
-    const message: MessageType.Create = {
-      roomId: selectedRoomId,
-      contentType: MessageContentType.text,
-      contentData: {
-        text: inputValue
-      }
-    }
-
-    messageActions.sendMessage(message)
-    setInputValue("")
-  }
-
-  const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (e.code === "Enter") sendMessage()
-  }
+  useAutoScroll(chatBoxRef, messages)
 
   return (
-    <Flex width="700px" h="100%" flexDir="column" margin="0 auto">
-      <ScrollContainer overflow="scroll">
+    <Flex width="700px" h="100%" flexDir="column" margin="0 auto" justifyContent="flex-end">
+      <ScrollContainer overflow="scroll" ref={chatBoxRef} p="5px 15px">
         <Flex flexBasis="100%" flexDir="column" justify="flex-end">
           {messages.map((message) => (
-            <Box
-              p={2}
-              key={message.id}
-              background="blue.600"
-              borderRadius="0.75rem"
-              w="max-content"
-              mb="10px"
-            >{`${message.user.username}:  ${message.contentData.text}`}</Box>
+            <Message key={message.id} {...message} />
           ))}
         </Flex>
       </ScrollContainer>
-
-      <Flex p={2}>
-        <Flex justify="center" alignItems="center" background="blue.800" w="100%" p={4} pl={0} borderRadius="0.75rem">
-          <Box pl={4} pr={4}>
-            <AttachmentIcon width={8} height={8} />
-          </Box>
-          <Input
-            placeholder="Enter..."
-            size="l"
-            variant="unstyled"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={onKeyDown}
-          />
-        </Flex>
-
-        <Flex
-          pl={4}
-          pr={4}
-          ml={2}
-          borderRadius="50%"
-          background="blue.800"
-          justify="center"
-          alignItems="center"
-          onClick={inputValue ? sendMessage : undefined}
-        >
-          {inputValue ? <ArrowRightIcon width={8} height={8} /> : <PhoneIcon width={8} height={8} />}
-        </Flex>
-      </Flex>
+      <ChatInput />
     </Flex>
   )
 }

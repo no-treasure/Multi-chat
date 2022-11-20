@@ -10,6 +10,7 @@
     "frontend": "apps/frontend",
     "frontend-api": "libs/frontend/api",
     "frontend-components": "libs/frontend/components",
+    "frontend-hooks": "libs/frontend/hooks",
     "frontend-pages": "libs/frontend/pages",
     "frontend-stores": "libs/frontend/stores",
     "shared-socket": "libs/shared/socket",

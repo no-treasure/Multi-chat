@@ -1,6 +1,24 @@
-import { AddIcon, DownloadIcon, SettingsIcon, HamburgerIcon, MoonIcon } from "@chakra-ui/icons"
-import { Menu as ChakraMenu, IconButton, MenuButton, MenuItem, MenuList, Switch, useColorMode } from "@chakra-ui/react"
+import {
+  AddIcon,
+  DownloadIcon,
+  SettingsIcon,
+  HamburgerIcon,
+  MoonIcon,
+  ExternalLinkIcon
+} from "@chakra-ui/icons"
+import {
+  Menu as ChakraMenu,
+  IconButton,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Switch,
+  useColorMode
+} from "@chakra-ui/react"
 import React from "react"
+import { useNavigate } from "react-router-dom"
+
+import { userActions } from "@multi-chat/frontend/stores"
 
 type Props = {
   //
@@ -8,6 +26,10 @@ type Props = {
 
 const Menu: React.FC<Props> = () => {
   const { colorMode, toggleColorMode } = useColorMode()
+
+  const onLogoutUser = () => {
+    userActions.logout()
+  }
 
   return (
     <ChakraMenu>
@@ -19,6 +41,9 @@ const Menu: React.FC<Props> = () => {
           Night Mode <Switch colorScheme="telegram" isChecked={colorMode === "dark"} />
         </MenuItem>
         <MenuItem icon={<DownloadIcon />}>Install App</MenuItem>
+        <MenuItem icon={<ExternalLinkIcon />} onClick={onLogoutUser}>
+          Logout
+        </MenuItem>
       </MenuList>
     </ChakraMenu>
   )

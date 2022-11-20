@@ -1,2 +1,2 @@
-export { userMap } from "./store"
+export { userMap, initialUserMap } from "./store"
 export * as userActions from "./actions"

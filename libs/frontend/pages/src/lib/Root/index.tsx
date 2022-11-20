@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react"
 import { useStore } from "@nanostores/react"
 
-import { Chat, RoomsList } from "@multi-chat/frontend/components"
+import { Chat, RoomList } from "@multi-chat/frontend/components"
 import { selectedRoomAtom } from "@multi-chat/frontend/stores"
 
 const RootPage = () => {
@@ -10,7 +10,7 @@ const RootPage = () => {
   return (
     <>
       <Box bg="blue.300" flexBasis="500" flexShrink="1">
-        <RoomsList />
+        <RoomList />
       </Box>
       <Box bg="blue.700" flexBasis="100%" flexGrow="2">
         {selectedRoom && <Chat />}
